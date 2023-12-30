@@ -2,7 +2,7 @@
 
 namespace Virtualdev\Virtualapi;
 
-class Main
+class Digiflazz
 {
     public function getHello()
     {
