@@ -1,0 +1,16 @@
+{
+    "name": "virtualdev/virtualapi",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Virtualdev\\Virtualapi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "virtualmu"
+        }
+    ],
+    "require": {}
+}
