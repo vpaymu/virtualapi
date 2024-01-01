@@ -1,5 +1,7 @@
 <?php
 
+namespace Virtualdev\Virtualapi;
+
 class Linkqu
 {
     private $user;
@@ -47,7 +49,7 @@ class Linkqu
         $response = curl_exec($ch);
 
         if (curl_errno($ch)) {
-            throw new Exception(curl_error($ch));
+            throw new \Exception(curl_error($ch));
         }
 
         curl_close($ch);
