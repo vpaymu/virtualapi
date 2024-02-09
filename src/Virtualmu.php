@@ -78,15 +78,28 @@ class Virtualmu
 
         return $this->sendGetRequest($url);
     }
-    public function cekIdBank(string $slug, string $tujuan, string $kode): array
+    public function cekIdBank(string $tujuan, string $kode): array
     {
-        $url = "{$this->endpoint}/v1/{$slug}?tujuan={$tujuan}&kode={$kode}";
+        $url = "{$this->endpoint}/v1/bank?tujuan={$tujuan}&kode={$kode}";
 
         return $this->sendGetRequest($url);
     }
-    public function cekIdBank2(string $slug, string $tujuan, string $kode): array
+    public function cekIdBank2(string $tujuan, string $kode): array
     {
-        $url = "{$this->endpoint2}/{$slug}?bankCode={$kode}&accountNumber={$tujuan}";
+        $url = "{$this->endpoint2}/getBankAccount?bankCode={$kode}&accountNumber={$tujuan}";
+
+        return $this->sendGetRequest($url);
+    }
+
+    public function cekIdEmoney(string $tujuan, string $kode): array
+    {
+        $url = "{$this->endpoint}/v1/emoney?tujuan={$tujuan}&kode={$kode}";
+
+        return $this->sendGetRequest($url);
+    }
+    public function cekIdEmoney2(string $tujuan, string $kode): array
+    {
+        $url = "{$this->endpoint2}/getEwalletAccount?bankCode={$kode}&accountNumber={$tujuan}";
 
         return $this->sendGetRequest($url);
     }
