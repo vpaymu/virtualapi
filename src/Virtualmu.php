@@ -5,11 +5,9 @@ namespace Virtualdev\Virtualapi;
 class Virtualmu
 {
     private string $endpoint;
-    private string $endpoint2;
-    public function __construct(string $endpoint, string $endpoint2)
+    public function __construct(string $endpoint)
     {
         $this->endpoint = $endpoint;
-        $this->endpoint2 = $endpoint2;
     }
     private function sendGetRequest(string $url): array
     {
@@ -32,80 +30,53 @@ class Virtualmu
 
     public function cekDataGame(): array
     {
-        $url = "{$this->endpoint}/v1/dok-games";
+        $url = "{$this->endpoint}/";
 
         return $this->sendGetRequest($url);
     }
 
     public function cekDataBank(): array
     {
-        $url = "{$this->endpoint}/v1/bank/kode";
+        $url = "{$this->endpoint}/bank";
 
         return $this->sendGetRequest($url);
     }
 
-    public function cekDataEmoney(): array
+    public function cekDataPln(): array
     {
-        $url = "{$this->endpoint}/v1/emoney/kode";
+        $url = "{$this->endpoint}/pln";
 
         return $this->sendGetRequest($url);
     }
-
-    public function cekDataBank2(): array
-    {
-        $url = "{$this->endpoint2}/listBank";
-
-        return $this->sendGetRequest($url);
-    }
-
-    public function cekDataEmoney2(): array
-    {
-        $url = "{$this->endpoint2}/listEwallet";
-
-        return $this->sendGetRequest($url);
-    }
-
     public function cekIdGame(string $slug, string $id): array
     {
-        $url = "{$this->endpoint}/v1/games/{$slug}?id={$id}";
+        $url = "{$this->endpoint}/api/game/{$slug}?id={$id}";
 
         return $this->sendGetRequest($url);
     }
 
     public function cekIdGameServer(string $slug, string $id, string $server): array
     {
-        $url = "{$this->endpoint}/v1/games/{$slug}?id={$id}&zone={$server}";
+        $url = "{$this->endpoint}/api/game/{$slug}?id={$id}&zone={$server}";
 
         return $this->sendGetRequest($url);
     }
     public function cekIdBank(string $tujuan, string $kode): array
     {
-        $url = "{$this->endpoint}/v1/bank?tujuan={$tujuan}&kode={$kode}";
-
-        return $this->sendGetRequest($url);
-    }
-    public function cekIdBank2(string $tujuan, string $kode): array
-    {
-        $url = "{$this->endpoint2}/getBankAccount?bankCode={$kode}&accountNumber={$tujuan}";
+        $url = "{$this->endpoint}/api/bank?tujuan={$tujuan}&kode={$kode}";
 
         return $this->sendGetRequest($url);
     }
 
     public function cekIdEmoney(string $tujuan, string $kode): array
     {
-        $url = "{$this->endpoint}/v1/emoney?tujuan={$tujuan}&kode={$kode}";
-
-        return $this->sendGetRequest($url);
-    }
-    public function cekIdEmoney2(string $tujuan, string $kode): array
-    {
-        $url = "{$this->endpoint2}/getEwalletAccount?bankCode={$kode}&accountNumber={$tujuan}";
+        $url = "{$this->endpoint}/api/emoney?tujuan={$tujuan}&kode={$kode}";
 
         return $this->sendGetRequest($url);
     }
     public function cekIdPln(string $id): array
     {
-        $url = "{$this->endpoint}/v1/pln?id={$id}";
+        $url = "{$this->endpoint}/api/pln?id={$id}";
 
         return $this->sendGetRequest($url);
     }
