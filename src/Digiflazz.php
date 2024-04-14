@@ -57,6 +57,7 @@ class Digiflazz
             return $this->makeRequest('cek-saldo', $data)['data'];
         } catch (\Exception $err) {
             $this->handleException($err);
+            throw $err;
         }
     }
 
@@ -69,6 +70,7 @@ class Digiflazz
             return $this->makeRequest('price-list', $data)['data'];
         } catch (\Exception $err) {
             $this->handleException($err);
+            throw $err;
         }
     }
 
@@ -81,6 +83,7 @@ class Digiflazz
             return ($respData['name'] !== '') ? $respData : 'Data tidak ditemukan';
         } catch (\Exception $err) {
             $this->handleException($err);
+            throw $err;
         }
     }
 
@@ -99,23 +102,25 @@ class Digiflazz
             return $this->makeRequest('deposit', $data)['data'];
         } catch (\Exception $err) {
             $this->handleException($err);
+            throw $err;
         }
     }
 
     public function transaksiDF(
+        ?string $cmd = null,
         string $buyer_sku_code,
         string $customer_no,
         string $ref_id,
-        ?string $cmd = null,
-        ?string $msg = null
+        ?string $amount = null
     ): array {
         $sign = $this->generateSign($ref_id);
         $data = [
+            'cmd' => $cmd,
             'username' => $this->username,
             'buyer_sku_code' => $buyer_sku_code,
             'customer_no' => $customer_no,
             'ref_id' => $ref_id,
-            'msg' => $msg,
+            'amount' => $amount,
             'sign' => $sign,
         ];
 
@@ -127,6 +132,7 @@ class Digiflazz
             return $this->makeRequest('transaction', $data)['data'];
         } catch (\Exception $err) {
             $this->handleException($err);
+            throw $err;
         }
     }
 }

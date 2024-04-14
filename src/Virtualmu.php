@@ -37,7 +37,7 @@ class Virtualmu
 
     public function cekDataBank(): array
     {
-        $url = "{$this->endpoint}/bank";
+        $url = "{$this->endpoint}/rekening";
 
         return $this->sendGetRequest($url);
     }
@@ -48,35 +48,10 @@ class Virtualmu
 
         return $this->sendGetRequest($url);
     }
-    public function cekIdGame(string $slug, string $id): array
+
+    public function cekDataPdam(): array
     {
-        $url = "{$this->endpoint}/api/game/{$slug}?id={$id}";
-
-        return $this->sendGetRequest($url);
-    }
-
-    public function cekIdGameServer(string $slug, string $id, string $server): array
-    {
-        $url = "{$this->endpoint}/api/game/{$slug}?id={$id}&zone={$server}";
-
-        return $this->sendGetRequest($url);
-    }
-    public function cekIdBank(string $tujuan, string $kode): array
-    {
-        $url = "{$this->endpoint}/api/bank?tujuan={$tujuan}&kode={$kode}";
-
-        return $this->sendGetRequest($url);
-    }
-
-    public function cekIdEmoney(string $tujuan, string $kode): array
-    {
-        $url = "{$this->endpoint}/api/emoney?tujuan={$tujuan}&kode={$kode}";
-
-        return $this->sendGetRequest($url);
-    }
-    public function cekIdPln(string $id): array
-    {
-        $url = "{$this->endpoint}/api/pln?id={$id}";
+        $url = "{$this->endpoint}/pdam";
 
         return $this->sendGetRequest($url);
     }
